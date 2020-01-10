@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Participant,Group,Organizer,Event,Membership,Event_Stage,Event_constraint,Notification
+from .models import *
 
 # Register your models here.
 
