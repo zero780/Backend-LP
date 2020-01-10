@@ -54,7 +54,7 @@ class Event(models.Model):
     description = models.TextField(blank=True)
     start_date = models.DateTimeField(default=None)
     end_date = models.DateTimeField(default=None)
-    availability = models.BooleanField
+    availability = models.BooleanField(default=True)
     status = models.BooleanField(default=True)
     organizer = models.ForeignKey(Organizer,on_delete=models.CASCADE)
 
@@ -86,10 +86,10 @@ class Event_Stage(models.Model):
 
 class Event_constraint(models.Model):
     id = models.AutoField(primary_key=True)
-    min_group_size = models.IntegerField
-    max_group_size = models.IntegerField
-    min_participant_age = models.IntegerField
-    max_participant_age = models.IntegerField
+    min_group_size = models.IntegerField(default=None)
+    max_group_size = models.IntegerField(default=None)
+    min_participant_age = models.IntegerField(default=None)
+    max_participant_age = models.IntegerField(default=None)
     event = models.ForeignKey(Event,on_delete=models.CASCADE)
 
     def __str__(self):

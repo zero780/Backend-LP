@@ -36,7 +36,7 @@ class Event_constraintSerializer(serializers.ModelSerializer):
         model = Event_constraint
         fields = '__all__'
 
-class Notification(serializers.ModelSerializer):
+class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         fields = '__all__'

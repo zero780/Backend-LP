@@ -5,6 +5,7 @@
 <ul>
 <li>$ python -m pip install Django </li>
 <li>$ python -m pip install Pillow</li>
+<li>$ python -m pip install django-cors-headers</li>
 
 </ul>
 
@@ -18,6 +19,14 @@ $ python manage.py runserver
 
 ### Vistas:<br />
 <ul>
-<li>/ </li>
+
 <li>/admin</li>
+<li>/participants</li>
+<li>/groups</li>
+<li>/organizers</li>
+<li>/events</li>
+<li>/memberships</li>
+<li>/event_stages</li>
+<li>/event_constraint</li>
+<li>/notifications</li>
 </ul>
