@@ -1,0 +1,23 @@
+# virtualenv related directories in Linux
+bin/
+include/
+lib/
+local/
+
+# virtualenv related directories in Windows
+Include/
+Lib/
+Scripts/
+
+# IDEs related directories
+**/.vscode/
+**/.idea/
+
+# Private data files and directories
+**/db.sqlite3
+
+# Temporal files and directories
+**/__pycache__/
+
+# uploaded files directory
+**/media/

@@ -3,8 +3,9 @@
 
 ### Necesario instalar:<br />
 <ul>
-<li>$ python -m pip install Django </li>
-<li>$ python -m pip install Pillow</li>
+<li>$ python -m pip install django </li>
+<li>$ python -m pip install pillow</li>
+<li>$ python -m pip install djangorestframework</li>
 <li>$ python -m pip install django-cors-headers</li>
 
 </ul>
