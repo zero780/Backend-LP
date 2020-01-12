@@ -50,7 +50,7 @@ class Event(models.Model):
                         ("Semi-Presencial","Semi-Presencial"),
                         ("Remota","Remota"),]
     modality = models.CharField(max_length=50,choices=modality_choices)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True,upload_to ='miApp/static/images/events')
     description = models.TextField(blank=True)
     start_date = models.DateTimeField(default=None)
     end_date = models.DateTimeField(default=None)
