@@ -21,12 +21,12 @@ $ python manage.py runserver
 <ul>
 
 <li>/admin</li>
-<li>/participants</li>
-<li>/groups</li>
-<li>/organizers</li>
-<li>/events</li>
-<li>/memberships</li>
-<li>/event_stages</li>
-<li>/event_constraint</li>
-<li>/notifications</li>
+<li>/api/participants</li>
+<li>/api/groups</li>
+<li>/api/organizers</li>
+<li>/api/events</li>
+<li>/api/memberships</li>
+<li>/api/event_stages</li>
+<li>/api/event_constraint</li>
+<li>/api/notifications</li>
 </ul>
