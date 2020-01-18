@@ -1,15 +1,16 @@
 from django.db import models
 from django import forms
+from django.contrib import auth
+
 
 class Organizer(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    username= models.CharField(max_length=30)
     email= models.EmailField(max_length=30)
-    password = models.CharField(max_length=20)
     country = models.CharField(max_length=30, default="Ecuador")
     city = models.CharField(max_length=30)
     status = models.BooleanField(null=True, default=True)
+    user = models.OneToOneField(auth.models.User, unique=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s: %s' % (self.id, self.name)
@@ -22,7 +23,7 @@ class Event(models.Model):
                         ("Semi-Presencial", "Semi-Presencial"),
                         ("Remota", "Remota")]
     modality = models.CharField(max_length=50, choices=modality_choices)
-    image = models.ImageField(null=True, upload_to ='miApp/static/images/events')
+    image = models.ImageField(null=True, upload_to ='miApp/media')
     description = models.TextField(null=True)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
@@ -48,9 +49,7 @@ class Participant(models.Model):
     id=models.AutoField(primary_key=True)
     names = models.CharField(max_length=50)
     last_names = models.CharField(max_length=50)
-    username= models.CharField(max_length=30)
     email= models.EmailField(max_length=30)
-    password = models.CharField(max_length=20)
     phone_number = models.CharField(max_length=10)
     date_of_birth = models.DateField()
     age = models.IntegerField()
@@ -58,6 +57,7 @@ class Participant(models.Model):
     city = models.CharField(max_length=30)
     status = models.BooleanField(null=True, default=True)
     notification_subscriptions = models.ManyToManyField(Event_Stage, through='Notification')
+    user = models.OneToOneField(auth.models.User, on_delete=models.CASCADE)
 
     def __str__(self):
         return '%s: %s %s' % (self.id, self.last_names, self.names)
@@ -80,6 +80,11 @@ class Membership(models.Model):
 
     def __str__(self):
         return '%s: Participante: %s\nGrupo: %s\nEvento: %s' % (self.id, self.participant,self.group,self.event)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['participant', 'group', 'event'], name='unique_membership')
+        ]
 
 class Event_constraint(models.Model):
     id = models.AutoField(primary_key=True)
@@ -99,3 +104,8 @@ class Notification(models.Model):
 
     def __str__(self):
         return '%s: Participante: %s\nEvento: %s' % (self.id, self.participant, self.event_stage)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['participant', 'event_stage'], name='unique_notification')
+        ]
