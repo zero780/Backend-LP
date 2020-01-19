@@ -25,7 +25,7 @@ SECRET_KEY = 'h2+s=qe$2$%=2=qgl&ah$jnker-&+i69*+q2mwfywehroclwlr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.100.241']
 
 CORS_ORIGIN_ALLOW_ALL=True
 # Application definition
