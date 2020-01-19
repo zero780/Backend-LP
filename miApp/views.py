@@ -7,8 +7,8 @@ from .models import *
 from .serializers import *
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
+from django_filters.rest_framework import DjangoFilterBackend
 
-# Create your views here.
 
 class JSONResponse(HttpResponse):
     """
@@ -27,6 +27,8 @@ class Participant_list(generics.ListCreateAPIView):
     """
     queryset = Participant.objects.all()
     serializer_class = ParticipantSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -53,6 +55,8 @@ class Group_list(generics.ListCreateAPIView):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -79,6 +83,8 @@ class Organizer_list(generics.ListCreateAPIView):
     """
     queryset = Organizer.objects.all()
     serializer_class = OrganizerSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -105,6 +111,8 @@ class Event_list(generics.ListCreateAPIView):
     """
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -131,6 +139,8 @@ class Membership_list(generics.ListCreateAPIView):
     """
     queryset = Membership.objects.all()
     serializer_class = MembershipSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -157,6 +167,8 @@ class Event_Stage_list(generics.ListCreateAPIView):
     """
     queryset = Event_Stage.objects.all()
     serializer_class = Event_StageSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -183,6 +195,8 @@ class Event_constraint_list(generics.ListCreateAPIView):
     """
     queryset = Event_constraint.objects.all()
     serializer_class = Event_constraintSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
@@ -209,6 +223,8 @@ class Notification_list(generics.ListCreateAPIView):
     """
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = '__all__'
 
     def get_object(self):
         queryset = self.get_queryset()
