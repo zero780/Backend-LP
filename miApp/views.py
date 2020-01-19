@@ -112,7 +112,16 @@ class Event_list(generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = '__all__'
+    filterset_fields = [
+        'name',
+        'location',
+        'modality',
+        'start_date',
+        'end_date',
+        'availability',
+        'status',
+        'organizer'
+    ]
 
     def get_object(self):
         queryset = self.get_queryset()
