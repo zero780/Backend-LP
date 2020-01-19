@@ -9,6 +9,8 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 
+import hashlib
+
 
 class JSONResponse(HttpResponse):
     """
@@ -57,6 +59,12 @@ class Group_list(generics.ListCreateAPIView):
     serializer_class = GroupSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
+
+    def perform_create(self, serializer):
+        group = serializer.save()
+        join_code = hashlib.md5(str(group.id).encode())
+        group.join_code = join_code.hexdigest()[:6]
+        group.save()
 
     def get_object(self):
         queryset = self.get_queryset()

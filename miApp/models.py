@@ -65,7 +65,7 @@ class Participant(models.Model):
 class Group(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    join_code = models.CharField(max_length=50)
+    join_code = models.CharField(max_length=50, null=True)
     status = models.BooleanField(null=True, default=True)
     participants = models.ManyToManyField(Participant, through='Membership')
 
